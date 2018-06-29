@@ -3,6 +3,9 @@
     <div class="title">
       <img src="../assets/logo.png">
       <h1>{{ msg }}</h1>
+      <div>
+        <kws-temperature :scale="scale" :temperature="temperature" @click="scale = scale === 'C' ? 'F' : 'C'"></kws-temperature>
+      </div>
     </div>
     <div class="content">
       <p>
@@ -24,6 +27,12 @@
 <script>
 export default {
   name: 'HelloWorld',
+  data() {
+    return {
+      scale: 'F',
+      temperature: 300
+    };
+  },
   props: {
     msg: String
   }
@@ -50,5 +59,9 @@ a {
 }
 .content {
   margin: 16px;
+}
+kws-temperature {
+  font-size: 36px;
+  cursor: pointer;
 }
 </style>
