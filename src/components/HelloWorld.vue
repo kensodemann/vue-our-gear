@@ -3,6 +3,9 @@
     <div class="title">
       <img src="../assets/logo.png">
       <h1>{{ msg }}</h1>
+      <div class="temperature-container" @click="scale = scale === 'C' ? 'F' : 'C'">
+        <Temperature :scale="scale" :temperature="temperature"></Temperature>
+      </div>
     </div>
     <div class="content">
       <p>
@@ -22,8 +25,17 @@
 </template>
 
 <script>
+import Temperature from './Temperature';
+
 export default {
   name: 'HelloWorld',
+  components: { Temperature },
+  data() {
+    return {
+      scale: 'C',
+      temperature: 288
+    };
+  },
   props: {
     msg: String
   }
@@ -50,5 +62,9 @@ a {
 }
 .content {
   margin: 16px;
+}
+.temperature-container {
+  font-size: 36px;
+  cursor: pointer;
 }
 </style>
