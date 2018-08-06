@@ -3,6 +3,9 @@
     <div class="title">
       <img src="../assets/logo.png">
       <h1>{{ msg }}</h1>
+     <div>
+       <kws-temperature :temperature=temperature :scale=scale @click="scale = scale === 'C' ? 'F' : 'C'"></kws-temperature>
+       </div> 
     </div>
     <div class="content">
       <p>
@@ -26,12 +29,22 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      temperature: 300,
+      scale: 'F'
+    };
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+kws-temperature {
+  font-size: 36px;
+  cursor: pointer;
+}
 h3 {
   margin: 40px 0 0;
 }
